@@ -10,6 +10,7 @@ namespace Lab1
     //commit two
     //commit three
     //commit one for dev
+    //commit two for dev
     class Program
     {
         static List<string> Students = new List<string>() { "Малинчик Марина", "Якубейко Юлия",
