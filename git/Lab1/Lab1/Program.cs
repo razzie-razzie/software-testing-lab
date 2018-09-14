@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab1
 {
+    //commit one
     class Program
     {
         static List<string> Students = new List<string>() { "Малинчик Марина", "Якубейко Юлия",
