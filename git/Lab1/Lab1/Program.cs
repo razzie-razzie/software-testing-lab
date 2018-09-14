@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Lab1
 {
     //commit one
+    //commit two
     class Program
     {
         static List<string> Students = new List<string>() { "Малинчик Марина", "Якубейко Юлия",
