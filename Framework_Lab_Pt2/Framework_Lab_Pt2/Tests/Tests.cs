@@ -86,35 +86,35 @@ namespace Framework_Lab_Pt2.Tests
 
         //6
         [Test]
-        public void CheckAdultsPassengersDecrement()
+        public void Test6()
         {
             steps.OpenMainPage();
         }
 
         //7
         [Test]
-        public void CheckThreeChildrenAndOneParent()
+        public void Test7()
         {
             steps.OpenMainPage();
         }
 
         //8
         [Test]
-        public void CheckAnotherAirports()
+        public void Test8()
         {
             steps.OpenMainPage();
         }
 
         //9
         [Test]
-        public void CheckTimeOutSession()
+        public void Test9()
         {
             steps.OpenMainPage();
         }
 
         //10
         [Test]
-        public void CheckPassengerLimit()
+        public void Test10()
         {
             steps.OpenMainPage();
         }
