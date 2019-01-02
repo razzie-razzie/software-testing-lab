@@ -37,6 +37,8 @@ namespace Framework_Lab_Pt2.Pages
         [FindsBy(How = How.XPath, Using = "//span[@class='add-flight col-xs-6 ng-scope']")]
         private IWebElement add_route_btn;
 
+        [FindsBy(How = How.XPath, Using = "//span[@class='_md-nav-button md-accent md-button md-ink-ripple md-unselected']")]
+        private IWebElement both_side_btn;
 
         private IWebDriver driver;
 
@@ -92,5 +94,11 @@ namespace Framework_Lab_Pt2.Pages
         {
             add_route_btn.Click();
         }
+
+        public void ClickBothSide()
+        {
+            both_side_btn.Click();
+        }
+
     }
 }

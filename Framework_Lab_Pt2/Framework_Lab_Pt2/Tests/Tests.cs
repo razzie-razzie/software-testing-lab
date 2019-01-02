@@ -26,14 +26,11 @@ namespace Framework_Lab_Pt2.Tests
 
         //1
         [Test]
-        public void CheckFilterWork()
+        public void CheckEnterNothing()
         {
             steps.OpenMainPage();
 
-            steps.EnterCities();
-            steps.EnterDates();
-
-            Assert.AreEqual(true, steps.CheckFiltersWork());
+            Assert.AreEqual(true, steps.CheckWinError());
         }
 
         //2
@@ -86,37 +83,66 @@ namespace Framework_Lab_Pt2.Tests
 
         //6
         [Test]
-        public void Test6()
+        public void CheckBothSidesActivates()
         {
             steps.OpenMainPage();
+
+            steps.BothSide();
+            steps.EnterCities();
+            steps.EnterDates();
+
+            Assert.AreEqual(true, steps.CheckWinError());
         }
 
         //7
         [Test]
-        public void Test7()
+        public void CheckAllSuccess()
         {
             steps.OpenMainPage();
+
+            steps.EnterCities();
+            steps.EnterDates();
+
+            Assert.AreEqual(true, steps.CheckWinError());
         }
 
         //8
         [Test]
-        public void Test8()
+        public void CheckWithoutTransfer()
         {
             steps.OpenMainPage();
+
+            steps.EnterCities();
+            steps.EnterDates();
+            steps.FlightWithoutTransfers();
+
+            Assert.AreEqual(true, steps.CheckWinError());
         }
 
         //9
         [Test]
-        public void Test9()
+        public void CheckChoosingBelavia()
         {
             steps.OpenMainPage();
+
+            steps.EnterCities();
+            steps.EnterDates();
+            steps.FlightByBelavia();
+
+            Assert.AreEqual(true, steps.CheckWinError());
         }
 
         //10
         [Test]
-        public void Test10()
+        public void CheckChoosingManyAorlines()
         {
             steps.OpenMainPage();
+
+            steps.EnterCities();
+            steps.EnterDates();
+            steps.FlightByManyAirlines();
+
+            Assert.AreEqual(true, steps.CheckWinError());
         }
     }
 }

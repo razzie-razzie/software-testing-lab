@@ -35,7 +35,7 @@ namespace Framework_Lab_Pt2.Steps
 
         public void EnterCities()
         {
-            _mainPage.EnterCityFrom("Минск, MSQ");
+            _mainPage.EnterCityFrom("");
             _mainPage.EnterCityTo("Москва, MOW");
         }
 
@@ -53,14 +53,14 @@ namespace Framework_Lab_Pt2.Steps
 
         public void EnterNonexistentCity()
         {
-            _mainPage.EnterCityFrom("Минск");
-            _mainPage.EnterCityTo("Муссучипинс");
+            _mainPage.EnterCityFrom("Минск, MSQ");
+            _mainPage.EnterCityTo("Ивацевичи");
         }
 
         public void EnterLastDate()
         {
-            _mainPage.EnterDateFrom("28-12-2018");
-            _mainPage.EnterDateTo("15-01-2019");
+            _mainPage.EnterDateFrom("25-12-2018");
+            _mainPage.EnterDateTo("22-01-2019");
         }
 
         public void AddRoute()
@@ -69,22 +69,38 @@ namespace Framework_Lab_Pt2.Steps
             _mainPage.ClickAddRoute();
         }
 
+        public void BothSide()
+        {
+            _mainPage.ClickBothSide();
+        }
+
         public bool CheckWinError()
         {
             _resultPage = _mainPage.ClickSearchTicket();
             return _resultPage.CheckErrorWindow();
         }
 
-        public bool CheckFiltersWork()
+        public void FlightWithoutTransfers()
         {
             _resultPage = _mainPage.ClickSearchTicket();
             System.Threading.Thread.Sleep(10000);
-            _resultPage.ClickButtonFilters();
-            _resultPage.ClickOneTransplants();
-            _resultPage.ClickTwoTransplants();
-            _resultPage.ClickThreeTransplants();
-            return _resultPage.CheckAnotherTransplants();
+            _resultPage.ClickTransferCheckbox();
         }
+
+        public void FlightByBelavia()
+        {
+            _resultPage = _mainPage.ClickSearchTicket();
+            System.Threading.Thread.Sleep(10000);
+            _resultPage.ChooseBelavia();
+        }
+
+        public void FlightByManyAirlines()
+        {
+            _resultPage = _mainPage.ClickSearchTicket();
+            System.Threading.Thread.Sleep(10000);
+            _resultPage.ChooseManyAirlines();
+        }
+
 
         public bool CheckListValue()
         {
@@ -92,7 +108,7 @@ namespace Framework_Lab_Pt2.Steps
 
             try
             {
-                driver.FindElement(By.Id("ui-menu-item"));
+                driver.FindElement(By.ClassName("dropdown-menu _city"));
             }
             catch (Exception ex)
             {

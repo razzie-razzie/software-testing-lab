@@ -12,27 +12,14 @@ namespace Framework_Lab_Pt2.Pages
     {
         private const string BASE_URL = "https://www.euroavia.ru/";
 
-        [FindsBy(How = How.Id, Using = "this_date")]
-        private IWebElement lowPriceCalendar;
+        [FindsBy(How = How.Id, Using = "stops1")]
+        private IWebElement transfer_checkbox;
 
-        [FindsBy(How = How.XPath, Using = "//button[@class='price_button']")]
-        private IWebElement priceButton;
+        [FindsBy(How = How.Id, Using = "B2")]
+        private IWebElement Belaviacheckbox;
 
-        [FindsBy(How = How.XPath, Using = "//*[contains(text(), '1 пересадка')]")]
-        private IWebElement oneTransplants;
-
-        [FindsBy(How = How.XPath, Using = "//*[contains(text(), '2 пересадки')]")]
-        private IWebElement twoTransplants;
-
-        [FindsBy(How = How.XPath, Using = "//*[contains(text(), '3 пересадки')]")]
-        private IWebElement threeTransplants;
-
-        [FindsBy(How = How.Name, Using = "downlist")]
-        private IWebElement buttonFilters;
-
-        [FindsBy(How = How.XPath, Using = "//span[@class='stops']//*[@stops='0']")]
-        private IWebElement stops;
-
+        [FindsBy(How = How.Id, Using = "owcAirlines")]
+        private IWebElement ManyAirlinescheckbox;
 
         private IWebDriver driver;
 
@@ -42,22 +29,20 @@ namespace Framework_Lab_Pt2.Pages
             PageFactory.InitElements(this.driver, this);
         }
 
-        public bool CheckAnotherTransplants()
+        public void ClickTransferCheckbox()
         {
-            bool exist = false;
-            try
-            {
-                this.driver.FindElement(By.XPath("//span[text()='1 пересадка']"));
-                this.driver.FindElement(By.XPath("//span[text()='2 пересадки']"));
-                this.driver.FindElement(By.XPath("//span[text()='3 пересадки']"));
-            }
-            catch
-            {
-                exist = true;
-            }
-            return exist;
+            transfer_checkbox.Click();
         }
 
+        public void ChooseBelavia()
+        {
+            Belaviacheckbox.Click();
+        }
+
+        public void ChooseManyAirlines()
+        {
+            ManyAirlinescheckbox.Click();
+        }
         public bool CheckErrorWindow()
         {
             bool exist = true;
@@ -70,26 +55,6 @@ namespace Framework_Lab_Pt2.Pages
                 exist = false;
             }
             return exist;
-        }
-
-        public void ClickOneTransplants()
-        {
-            oneTransplants.Click();
-        }
-
-        public void ClickTwoTransplants()
-        {
-            twoTransplants.Click();
-        }
-
-        public void ClickThreeTransplants()
-        {
-            threeTransplants.Click();
-        }
-
-        public void ClickButtonFilters()
-        {
-            buttonFilters.Click();
         }
 
     }
