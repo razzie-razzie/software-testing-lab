@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Framework_Lab_Pt2.Pages
+namespace Frm.Pages
 {
     class SecondPage
     {

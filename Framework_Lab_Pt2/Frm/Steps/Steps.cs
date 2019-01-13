@@ -1,5 +1,5 @@
-﻿using Framework_Lab_Pt2.Pages;
-using Framework_Lab_Pt2.Driver;
+﻿using Frm.Driver;
+using Frm.Pages;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Framework_Lab_Pt2.Steps
+namespace Frm.Steps
 {
     class Steps
     {

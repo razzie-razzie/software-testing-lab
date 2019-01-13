@@ -28,6 +28,7 @@ namespace Framework_Lab
         public void Test1()
         {
             steps.EnterCities("Минск, MSQ", "Москва, MOW");
+
         }
     }
 }

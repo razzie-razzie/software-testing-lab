@@ -1,4 +1,4 @@
-﻿using Framework_Lab_Pt2.Driver;
+﻿using Frm.Driver;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Framework_Lab_Pt2.Pages
+namespace Frm.Pages
 {
     class MainPage
     {
@@ -99,6 +99,5 @@ namespace Framework_Lab_Pt2.Pages
         {
             both_side_btn.Click();
         }
-
     }
 }
