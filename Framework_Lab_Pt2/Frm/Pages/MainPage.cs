@@ -14,33 +14,33 @@ namespace Frm.Pages
         private const string BASE_URL = "https://santufei.com";
 
         [FindsBy(How = How.XPath, Using = "//a[@class='btn btn-orn']")]
-        private IWebElement SearchTicket_btn;
+        public IWebElement SearchTicket_btn;
 
         [FindsBy(How = How.Id, Using = "city-from__input")]
-        private IWebElement city_from;
+        public IWebElement city_from;
 
         [FindsBy(How = How.Id, Using = "city-to__input")]
-        private IWebElement city_to;
+        public IWebElement city_to;
 
         [FindsBy(How = How.Id, Using = "date-from__input")]
-        private IWebElement date_from;
+        public IWebElement date_from;
 
         [FindsBy(How = How.Id, Using = "date-to__input")]
-        private IWebElement date_to;
+        public IWebElement date_to;
 
         [FindsBy(How = How.XPath, Using = "//span[@class='search-button input-group-btn']")]
-        private IWebElement search_btn;
+        public IWebElement search_btn;
 
         [FindsBy(How = How.XPath, Using = "//span[@class='_md-nav-button md-accent md-button md-ink-ripple md-active md-primary']")]
-        private IWebElement composite_route_btn;
+        public IWebElement composite_route_btn;
 
         [FindsBy(How = How.XPath, Using = "//span[@class='add-flight col-xs-6 ng-scope']")]
-        private IWebElement add_route_btn;
+        public IWebElement add_route_btn;
 
-        [FindsBy(How = How.XPath, Using = "//span[@class='_md-nav-button md-accent md-button md-ink-ripple md-unselected']")]
-        private IWebElement both_side_btn;
+        [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[1]/div[1]/md-nav-bar/div/nav/ul/li[2]/button/span")]
+        public IWebElement both_side_btn;
 
-        private IWebDriver driver;
+        public IWebDriver driver;
 
         public MainPage(IWebDriver driver)
         {

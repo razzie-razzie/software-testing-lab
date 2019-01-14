@@ -35,7 +35,7 @@ namespace Frm.Steps
 
         public void EnterCities()
         {
-            _mainPage.EnterCityFrom("");
+            _mainPage.EnterCityFrom("Минск, MSQ");
             _mainPage.EnterCityTo("Москва, MOW");
         }
 
@@ -115,6 +115,11 @@ namespace Frm.Steps
                 return false;
             }
             return true;
+        }
+
+        public IWebElement GetBorthSidesBtn()
+        {
+            return _mainPage.both_side_btn;
         }
     }
 }

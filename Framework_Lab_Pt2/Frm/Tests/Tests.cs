@@ -89,9 +89,8 @@ namespace Frm.Tests
 
             steps.BothSide();
             steps.EnterCities();
-            steps.EnterDates();
 
-            Assert.AreEqual(true, steps.CheckWinError());
+            Assert.IsTrue(steps.GetBorthSidesBtn().Enabled);
         }
 
         //7
