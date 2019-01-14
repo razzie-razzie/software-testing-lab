@@ -28,34 +28,7 @@ namespace Frm.Pages
             this.driver = driver;
             PageFactory.InitElements(this.driver, this);
         }
-
-        public void ClickTransferCheckbox()
-        {
-            transfer_checkbox.Click();
-        }
-
-        public void ChooseBelavia()
-        {
-            Belaviacheckbox.Click();
-        }
-
-        public void ChooseManyAirlines()
-        {
-            ManyAirlinescheckbox.Click();
-        }
-        public bool CheckErrorWindow()
-        {
-            bool exist = true;
-            try
-            {
-                this.driver.FindElement(By.XPath("//i[@class='icon-warning']"));
-            }
-            catch
-            {
-                exist = false;
-            }
-            return exist;
-        }
+ 
 
     }
 }

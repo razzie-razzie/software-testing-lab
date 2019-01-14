@@ -30,19 +30,22 @@ namespace Frm.Tests
         {
             steps.OpenMainPage();
 
-            Assert.AreEqual(true, steps.CheckWinError());
+            Assert.IsTrue(steps.IsDisabledDateTo());
         }
 
         //2
         [Test]
-        public void CheckDateChecking()
+        public void CheckCitiesInversing()
         {
             steps.OpenMainPage();
 
             steps.EnterCities();
-            steps.EnterLastDate();
+            var city_from = steps.GetCityFromValue();
+            var city_to = steps.GetCityToValue();
+            steps.InverseCities();
 
-            Assert.AreEqual(true, steps.CheckWinError());
+            Assert.IsTrue(steps.GetCityFromValue() == city_to && steps.GetCityToValue() == city_from);
+
         }
 
         //3
@@ -52,32 +55,30 @@ namespace Frm.Tests
             steps.OpenMainPage();
 
             steps.EnterSimilarCities();
-            steps.EnterDates();
 
-            Assert.AreEqual(true, steps.CheckWinError());
+            Assert.AreEqual(steps.GetCityFromValue(), steps.GetCityToValue());
         }
 
         //4
         [Test]
-        public void CheckExistenceCity()
+        public void CheckChoosingBuisnessClass()
         {
             steps.OpenMainPage();
 
-            steps.EnterNonexistentCity();
-            steps.EnterDates();
+            steps.ChooseBuisnessClass();
 
-            Assert.AreEqual(false, steps.CheckListValue());
+            Assert.IsTrue(steps.IsBuisnessClassChecked());
         }
 
         //5
         [Test]
-        public void CheckRoutesAdded()
+        public void CheckCompositeRoute()
         {
             steps.OpenMainPage();
 
-            steps.AddRoute();
+            steps.CompositeRoute();
 
-            Assert.AreEqual(true, steps.CheckWinError());
+            Assert.AreEqual(true, steps.GetAddRoute().Displayed);
 
         }
 
@@ -88,21 +89,19 @@ namespace Frm.Tests
             steps.OpenMainPage();
 
             steps.BothSide();
-            steps.EnterCities();
 
-            Assert.IsTrue(steps.GetBorthSidesBtn().Enabled);
+            Assert.IsTrue(steps.GetDateFrom().Enabled);
         }
 
         //7
         [Test]
-        public void CheckAllSuccess()
+        public void CheckEnterCities()
         {
             steps.OpenMainPage();
 
             steps.EnterCities();
-            steps.EnterDates();
 
-            Assert.AreEqual(true, steps.CheckWinError());
+            Assert.IsTrue(steps.GetCityFromValue() == steps.city_from_name && steps.GetCityToValue() == steps.city_to_name);
         }
 
         //8
@@ -112,37 +111,37 @@ namespace Frm.Tests
             steps.OpenMainPage();
 
             steps.EnterCities();
-            steps.EnterDates();
-            steps.FlightWithoutTransfers();
-
-            Assert.AreEqual(true, steps.CheckWinError());
         }
 
         //9
         [Test]
-        public void CheckChoosingBelavia()
+        public void CheckAddandDelRoute()
         {
-            steps.OpenMainPage();
+            try
+            {
+                steps.OpenMainPage();
 
-            steps.EnterCities();
-            steps.EnterDates();
-            steps.FlightByBelavia();
+                steps.AddRoute();
+                steps.DelRoute();
+            }
+            catch (Exception ex)
+            {
+                Assert.Equals(ex.Message, "NoSuchElementException");
+            }
 
-            Assert.AreEqual(true, steps.CheckWinError());
         }
 
         //10
         [Test]
-        public void CheckChoosingManyAorlines()
+        public void CheckAddRoute()
         {
             steps.OpenMainPage();
 
-            steps.EnterCities();
-            steps.EnterDates();
-            steps.FlightByManyAirlines();
+            steps.AddRoute();
 
-            Assert.AreEqual(true, steps.CheckWinError());
+            Assert.AreEqual(true, steps.GetAddedRouteCity().Displayed);
+
         }
     }
 }
- 
+

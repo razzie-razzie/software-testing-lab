@@ -31,15 +31,30 @@ namespace Frm.Pages
         [FindsBy(How = How.XPath, Using = "//span[@class='search-button input-group-btn']")]
         public IWebElement search_btn;
 
-        [FindsBy(How = How.XPath, Using = "//span[@class='_md-nav-button md-accent md-button md-ink-ripple md-active md-primary']")]
+        [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[1]/div[1]/md-nav-bar/div/nav/ul/li[3]/button")]
         public IWebElement composite_route_btn;
 
-        [FindsBy(How = How.XPath, Using = "//span[@class='add-flight col-xs-6 ng-scope']")]
+        [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[3]/div[2]/a")]
         public IWebElement add_route_btn;
 
         [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[1]/div[1]/md-nav-bar/div/nav/ul/li[2]/button/span")]
         public IWebElement both_side_btn;
 
+        [FindsBy(How = How.Id, Using = "city-complexf-2")]
+        public IWebElement added_city;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[3]/form[3]/a")]
+        public IWebElement del_route_btn;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[2]/form[1]/div[1]/div/span")]
+        public IWebElement inverse_cities_btn;
+
+        [FindsBy(How = How.Id, Using = "pass-count")]
+        public IWebElement list_passenger_class;
+
+        [FindsBy(How = How.Id, Using = "//*[@id='radio_1']")]
+        public IWebElement buisness_class_btn;
+        
         public IWebDriver driver;
 
         public MainPage(IWebDriver driver)
@@ -95,9 +110,30 @@ namespace Frm.Pages
             add_route_btn.Click();
         }
 
+        public void ClickDelRoute()
+        {
+            del_route_btn.Click();
+        }
+
         public void ClickBothSide()
         {
             both_side_btn.Click();
         }
+
+        public void ClickInverseBtn()
+        {
+            inverse_cities_btn.Click();
+        }
+
+        public void ClickList()
+        {
+            list_passenger_class.Click();
+        }
+
+        public void ClickBuisnessClass()
+        {
+            buisness_class_btn.Click();
+        }
+
     }
 }

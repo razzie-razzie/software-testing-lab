@@ -11,6 +11,8 @@ namespace Frm.Steps
 {
     class Steps
     {
+        public string city_from_name = "Минск, MSQ";
+        public string city_to_name = "Москва, MOW";
         private IWebDriver driver;
 
         private MainPage _mainPage { get; set; }
@@ -35,32 +37,31 @@ namespace Frm.Steps
 
         public void EnterCities()
         {
-            _mainPage.EnterCityFrom("Минск, MSQ");
-            _mainPage.EnterCityTo("Москва, MOW");
+            _mainPage.EnterCityFrom(city_from_name);
+            _mainPage.EnterCityTo(city_to_name);
         }
 
         public void EnterDates()
         {
-            _mainPage.EnterDateFrom("15-01-2019");
-            _mainPage.EnterDateTo("29-01-2019");
+            _mainPage.EnterDateFrom("23.01.2019");
+            _mainPage.EnterDateTo("05.02.2019");
         }
 
         public void EnterSimilarCities()
         {
-            _mainPage.EnterCityTo("Москва, MOW");
-            _mainPage.EnterDateFrom("Москва, MOW");
+            _mainPage.EnterCityFrom(city_to_name);
+            _mainPage.EnterCityTo(city_to_name);
         }
 
         public void EnterNonexistentCity()
         {
-            _mainPage.EnterCityFrom("Минск, MSQ");
+            _mainPage.EnterCityFrom(city_to_name);
             _mainPage.EnterCityTo("Ивацевичи");
         }
 
-        public void EnterLastDate()
+        public void CompositeRoute()
         {
-            _mainPage.EnterDateFrom("25-12-2018");
-            _mainPage.EnterDateTo("22-01-2019");
+            _mainPage.ClickCompositeRoute();
         }
 
         public void AddRoute()
@@ -69,38 +70,26 @@ namespace Frm.Steps
             _mainPage.ClickAddRoute();
         }
 
+        public void DelRoute()
+        {
+            _mainPage.ClickDelRoute();
+        }
+
         public void BothSide()
         {
             _mainPage.ClickBothSide();
         }
 
-        public bool CheckWinError()
+        public void InverseCities()
         {
-            _resultPage = _mainPage.ClickSearchTicket();
-            return _resultPage.CheckErrorWindow();
+            _mainPage.ClickInverseBtn();
         }
 
-        public void FlightWithoutTransfers()
+        public void ChooseBuisnessClass()
         {
-            _resultPage = _mainPage.ClickSearchTicket();
-            System.Threading.Thread.Sleep(10000);
-            _resultPage.ClickTransferCheckbox();
+            _mainPage.ClickList();
+            _mainPage.ClickBuisnessClass();
         }
-
-        public void FlightByBelavia()
-        {
-            _resultPage = _mainPage.ClickSearchTicket();
-            System.Threading.Thread.Sleep(10000);
-            _resultPage.ChooseBelavia();
-        }
-
-        public void FlightByManyAirlines()
-        {
-            _resultPage = _mainPage.ClickSearchTicket();
-            System.Threading.Thread.Sleep(10000);
-            _resultPage.ChooseManyAirlines();
-        }
-
 
         public bool CheckListValue()
         {
@@ -117,9 +106,66 @@ namespace Frm.Steps
             return true;
         }
 
-        public IWebElement GetBorthSidesBtn()
+        public IWebElement GetBothSidesBtn()
         {
             return _mainPage.both_side_btn;
+        }
+
+        public IWebElement GetDateFrom()
+        {
+            return _mainPage.date_from;
+        }
+
+        public IWebElement GetDateTo()
+        {
+            return _mainPage.date_to;
+        }
+
+        public IWebElement GetAddRoute()
+        {
+            return _mainPage.add_route_btn;
+        }
+
+        public IWebElement GetAddedRouteCity()
+        {
+            return _mainPage.added_city;
+        }
+
+        public IWebElement GetBuisnessClassBtn()
+        {
+            return _mainPage.buisness_class_btn;
+        }
+
+        public string GetCityFromValue()
+        {
+            var city_from = _mainPage.city_from;
+            return Convert.ToString(city_from.GetAttribute("value"));
+        }
+
+        public string GetCityToValue()
+        {
+            var city_to = _mainPage.city_to;
+            return Convert.ToString(city_to.GetAttribute("value"));
+        }
+
+        public bool IsDisabledDateTo()
+        {
+            string class_name = GetDateTo().GetAttribute("class");
+            if (class_name.Contains("disabled "))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool IsBuisnessClassChecked()
+        {
+            string isChecked = GetBuisnessClassBtn().GetAttribute("aria-checked");
+            if (isChecked == "false")
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
