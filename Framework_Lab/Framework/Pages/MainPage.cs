@@ -1,6 +1,10 @@
-﻿using Framework.Utils;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Framework_Lab.Pages
 {
@@ -8,20 +12,23 @@ namespace Framework_Lab.Pages
     {
         private const string BASE_URL = "https://santufei.com";
 
-        [FindsBy(How = How.XPath, Using = "//a[@class='btn btn-orn']")]
-        private IWebElement SearchTicket_btn;
+        [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[2]/form[1]/div[6]/button")]
+        public IWebElement search_btn;
 
         [FindsBy(How = How.Id, Using = "city-from__input")]
-        private IWebElement city_from;
+        public IWebElement city_from;
 
         [FindsBy(How = How.Id, Using = "city-to__input")]
-        private IWebElement city_to;
+        public IWebElement city_to;
 
         [FindsBy(How = How.Id, Using = "date-from__input")]
-        private IWebElement date_from;
+        public IWebElement date_from;
 
         [FindsBy(How = How.Id, Using = "date-to__input")]
-        private IWebElement date_to;
+        public IWebElement date_to;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[2]/form[1]/div[1]/div/span")]
+        public IWebElement inverse_cities_btn;
 
         private IWebDriver driver;
 
@@ -36,29 +43,21 @@ namespace Framework_Lab.Pages
             driver.Navigate().GoToUrl(BASE_URL);
         }
 
-        public void EnterCityFrom(string departureCity)
+        public void EnterCityFrom(string city)
         {
-            city_from.SendKeys(departureCity);
+            city_from.Clear();
+            city_from.SendKeys(city);
         }
 
-        public void EnterCityTo(string arrivalCity)
+        public void EnterCityTo(string city)
         {
-            city_to.SendKeys(arrivalCity);
+            city_to.Clear();
+            city_to.SendKeys(city);
         }
 
-        public void EnterDateFrom(string twoDaysAgoDate)
+        public void ClickInverseBtn()
         {
-            date_from.SendKeys(twoDaysAgoDate);
-        }
-
-        public void EnterDateTo(string twoDaysAgoDate)
-        {
-            date_to.SendKeys(twoDaysAgoDate);
-        }
-
-        public void SearchTicketBtn_Click()
-        {
-            SearchTicket_btn.Click();
+            inverse_cities_btn.Click();
         }
     }
 }

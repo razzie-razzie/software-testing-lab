@@ -24,10 +24,17 @@ namespace Framework_Lab
             steps.CloseBrowser();
         }
 
-        [TestCase]
-        public void Test1()
+        [Test]
+        public void CheckCitiesInversing()
         {
-            steps.EnterCities("Минск, MSQ", "Москва, MOW");
+            steps.OpenMainPage();
+
+            steps.EnterCities();
+            var city_from = steps.GetCityFromValue();
+            var city_to = steps.GetCityToValue();
+            steps.InverseCities();
+
+            Assert.IsTrue(steps.GetCityFromValue() == city_to && steps.GetCityToValue() == city_from);
 
         }
     }
