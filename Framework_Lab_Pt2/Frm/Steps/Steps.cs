@@ -41,22 +41,10 @@ namespace Frm.Steps
             _mainPage.EnterCityTo(city_to_name);
         }
 
-        public void EnterDates()
-        {
-            _mainPage.EnterDateFrom("23.01.2019");
-            _mainPage.EnterDateTo("05.02.2019");
-        }
-
         public void EnterSimilarCities()
         {
             _mainPage.EnterCityFrom(city_to_name);
             _mainPage.EnterCityTo(city_to_name);
-        }
-
-        public void EnterNonexistentCity()
-        {
-            _mainPage.EnterCityFrom(city_to_name);
-            _mainPage.EnterCityTo("Ивацевичи");
         }
 
         public void CompositeRoute()
@@ -85,25 +73,28 @@ namespace Frm.Steps
             _mainPage.ClickInverseBtn();
         }
 
-        public void ChooseBuisnessClass()
+        public void DisplayList()
         {
             _mainPage.ClickList();
+        }
+        public void ChooseBuisnessClass()
+        {
             _mainPage.ClickBuisnessClass();
         }
 
-        public bool CheckListValue()
+        public void AddAdult()
         {
-            _mainPage = new MainPage(driver);
+            _mainPage.ClickAddAdult();
+        }
 
-            try
-            {
-                driver.FindElement(By.ClassName("dropdown-menu _city"));
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            return true;
+        public void AddChild()
+        {
+            _mainPage.ClickAddChild();
+        }
+
+        public void AddBaby()
+        {
+            _mainPage.ClickAddBaby();
         }
 
         public IWebElement GetBothSidesBtn()
@@ -133,7 +124,7 @@ namespace Frm.Steps
 
         public IWebElement GetBuisnessClassBtn()
         {
-            return _mainPage.buisness_class_btn;
+            return _mainPage.buisness_class;
         }
 
         public string GetCityFromValue()
@@ -146,6 +137,24 @@ namespace Frm.Steps
         {
             var city_to = _mainPage.city_to;
             return Convert.ToString(city_to.GetAttribute("value"));
+        }
+
+        public int GetAdultCount()
+        {
+            var adult_count = _mainPage.adult_counter;
+            return Convert.ToInt32(Convert.ToString(adult_count.GetAttribute("data-counter")));
+        }
+
+        public int GetChildrenCount()
+        {
+            var children_count = _mainPage.children_counter;
+            return Convert.ToInt32(Convert.ToString(children_count.GetAttribute("data-counter")));
+        }
+
+        public int GetBabyCount()
+        {
+            var baby_count = _mainPage.baby_counter;
+            return Convert.ToInt32(Convert.ToString(baby_count.GetAttribute("data-counter")));
         }
 
         public bool IsDisabledDateTo()
@@ -167,6 +176,8 @@ namespace Frm.Steps
             }
             return true;
         }
+
+
     }
 }
 

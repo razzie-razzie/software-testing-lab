@@ -65,9 +65,11 @@ namespace Frm.Tests
         {
             steps.OpenMainPage();
 
+            steps.DisplayList();
             steps.ChooseBuisnessClass();
 
             Assert.IsTrue(steps.IsBuisnessClassChecked());
+
         }
 
         //5
@@ -106,11 +108,22 @@ namespace Frm.Tests
 
         //8
         [Test]
-        public void CheckWithoutTransfer()
+        public void CheckAddAdultsChildrenandBaby()
         {
             steps.OpenMainPage();
 
-            steps.EnterCities();
+            steps.DisplayList();
+            int adults = steps.GetAdultCount();
+            int children = steps.GetChildrenCount();
+            int babies = steps.GetBabyCount();
+
+            steps.AddAdult();
+            steps.AddChild();
+            steps.AddBaby();
+
+            Assert.IsTrue(steps.GetAdultCount() == (adults + 1) &&
+                          steps.GetChildrenCount() == (children + 1) &&
+                          steps.GetBabyCount() == (babies + 1));
         }
 
         //9

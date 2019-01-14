@@ -10,16 +10,14 @@ namespace Frm.Pages
 {
     class SecondPage
     {
-        private const string BASE_URL = "https://www.euroavia.ru/";
-
         [FindsBy(How = How.Id, Using = "stops1")]
-        private IWebElement transfer_checkbox;
+        public IWebElement transfer_checkbox;
 
         [FindsBy(How = How.Id, Using = "B2")]
-        private IWebElement Belaviacheckbox;
+        public IWebElement Belaviacheckbox;
 
         [FindsBy(How = How.Id, Using = "owcAirlines")]
-        private IWebElement ManyAirlinescheckbox;
+        public IWebElement ManyAirlinescheckbox;
 
         private IWebDriver driver;
 

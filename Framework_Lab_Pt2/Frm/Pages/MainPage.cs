@@ -13,8 +13,8 @@ namespace Frm.Pages
     {
         private const string BASE_URL = "https://santufei.com";
 
-        [FindsBy(How = How.XPath, Using = "//a[@class='btn btn-orn']")]
-        public IWebElement SearchTicket_btn;
+        [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[2]/form[1]/div[6]/button")]
+        public IWebElement search_btn;
 
         [FindsBy(How = How.Id, Using = "city-from__input")]
         public IWebElement city_from;
@@ -27,9 +27,6 @@ namespace Frm.Pages
 
         [FindsBy(How = How.Id, Using = "date-to__input")]
         public IWebElement date_to;
-
-        [FindsBy(How = How.XPath, Using = "//span[@class='search-button input-group-btn']")]
-        public IWebElement search_btn;
 
         [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[1]/div[1]/md-nav-bar/div/nav/ul/li[3]/button")]
         public IWebElement composite_route_btn;
@@ -52,9 +49,27 @@ namespace Frm.Pages
         [FindsBy(How = How.Id, Using = "pass-count")]
         public IWebElement list_passenger_class;
 
-        [FindsBy(How = How.Id, Using = "//*[@id='radio_1']")]
-        public IWebElement buisness_class_btn;
-        
+        [FindsBy(How = How.XPath, Using = "//*[@id='radio_1']/div[1]/div[1]")]
+        public IWebElement buisness_class;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[2]/form[1]/div[5]/div/table/tbody/tr[1]/td[2]/div/a[2]")]
+        public IWebElement add_adult;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[2]/form[1]/div[5]/div/table/tbody/tr[2]/td[2]/div/a[2]")]
+        public IWebElement add_child;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[2]/form[1]/div[5]/div/table/tbody/tr[3]/td[2]/div/a[2]")]
+        public IWebElement add_baby;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[2]/form[1]/div[5]/div/table/tbody/tr[1]/td[2]/div/div")]
+        public IWebElement adult_counter;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[2]/form[1]/div[5]/div/table/tbody/tr[2]/td[2]/div/div")]
+        public IWebElement children_counter;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='airlines']/div/div/div[2]/form[1]/div[5]/div/table/tbody/tr[3]/td[2]/div/div")]
+        public IWebElement baby_counter;
+
         public IWebDriver driver;
 
         public MainPage(IWebDriver driver)
@@ -132,7 +147,22 @@ namespace Frm.Pages
 
         public void ClickBuisnessClass()
         {
-            buisness_class_btn.Click();
+            buisness_class.Click();
+        }
+
+        public void ClickAddAdult()
+        {
+            add_adult.Click();
+        }
+
+        public void ClickAddChild()
+        {
+            add_child.Click();
+        }
+
+        public void ClickAddBaby()
+        {
+            add_baby.Click();
         }
 
     }
